@@ -88,7 +88,7 @@ public:
 
 public slots:
     /* handler for the sequencer events */
-    void sequencerEvent( drumstick::ALSA::SequencerEvent* ev );
+    void sequencerEvent( drumstick::SequencerEvent* ev );
     void songFinished();
     void shutupSound();
     void setLoop(bool enable);
@@ -98,15 +98,15 @@ signals:
     void finished();
 
 private:
-    QStringList list_ports(drumstick::ALSA::PortInfoList& refs);
+    QStringList list_ports(drumstick::PortInfoList& refs);
 
     State m_state;
     int m_resolution;
     int m_tempo;
 
-    drumstick::ALSA::MidiClient* m_client;
-    drumstick::ALSA::MidiQueue* m_queue;
-    drumstick::ALSA::MidiPort* m_port;
+    drumstick::MidiClient* m_client;
+    drumstick::MidiQueue* m_queue;
+    drumstick::MidiPort* m_port;
     SequenceModel* m_model;
     Player* m_player;
 };

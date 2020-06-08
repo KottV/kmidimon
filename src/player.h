@@ -23,16 +23,16 @@
 #include <drumstick/alsaclient.h>
 #include "sequencemodel.h"
 
-class Player : public drumstick::ALSA::SequencerOutputThread
+class Player : public drumstick::SequencerOutputThread
 {
     Q_OBJECT
 
 public:
-    Player(drumstick::ALSA::MidiClient *seq, int portId);
+    Player(drumstick::MidiClient *seq, int portId);
 	virtual ~Player();
     virtual void run();
     virtual bool hasNext();
-    virtual drumstick::ALSA::SequencerEvent* nextEvent();
+    virtual drumstick::SequencerEvent* nextEvent();
     virtual unsigned int getInitialPosition() { return m_songPosition; }
     virtual unsigned int getEchoResolution() { return m_echoResolution; }
     void setSong(Song* s, unsigned int division);

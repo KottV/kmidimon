@@ -22,7 +22,7 @@
 #include "sequencemodel.h"
 #include "eventfilter.h"
 
-using namespace drumstick::ALSA;
+using namespace drumstick;
 
 void ProxyModel::setFilterTrack(int track)
 {

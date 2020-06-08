@@ -36,8 +36,8 @@
 #include <QTextCodec>
 
 using namespace drumstick;
-using namespace ALSA;
-using namespace File;
+//using namespace ALSA;
+//using namespace File;
 
 static inline bool eventLessThan(const SequenceItem& s1, const SequenceItem& s2)
 {

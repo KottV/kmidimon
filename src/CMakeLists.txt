@@ -75,8 +75,8 @@ add_executable(kmidimon ${kmidimon_SRCS})
 
 target_link_libraries( kmidimon
     Qt5::Widgets
-    Drumstick::ALSA
-    Drumstick::File
+    drumstick-alsa
+    drumstick-file
 )
 
 target_compile_definitions( kmidimon PRIVATE

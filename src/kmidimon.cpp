@@ -174,7 +174,7 @@ KMidimon::KMidimon() :
         readConfiguration();
         fileNew();
         record();
-    } catch (drumstick::ALSA::SequencerError& ex) {
+    } catch (drumstick::SequencerError& ex) {
         QString errorstr = tr("Fatal error from the ALSA sequencer. "
             "This usually happens when the kernel doesn't have ALSA support, "
             "or the device node (/dev/snd/seq) doesn't exists, "

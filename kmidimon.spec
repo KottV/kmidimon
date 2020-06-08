@@ -1,0 +1,92 @@
+#
+# spec file for package kmidimon (Version )
+#
+# norootforbuild
+
+Name:           kmidimon
+Version:        
+Release:        0
+License:        GPL v2 or later
+Summary:        KDE MIDI Monitor for ALSA Sequencer
+Group:          Productivity/Multimedia/Sound/Midi
+URL:            http://kmidimon.sourceforge.net
+Source:         %name-%version.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  cmake
+BuildRequires:  alsa-devel
+BuildRequires:  libkde4-devel
+BuildRequires:  libdrumstick-devel
+Requires:       libdrumstick-file0
+#the above dependency provides the mime-type definitions that kmidimon handles 
+%kde4_runtime_requires
+
+%description
+ALSA sequencer based MIDI monitor for Linux
+
+
+Authors:
+--------
+    Pedro Lopez-Cabanillas <plcl@users.sourceforge.net>
+
+%debug_package
+%prep
+%setup -q
+
+%build
+%cmake_kde4 -- -DSTATIC_DRUMSTIC=NO
+%make_jobs
+
+%install
+%makeinstall
+%suse_update_desktop_file -G "MIDI Monitor" %name AudioVideo Music
+%find_lang %{name}
+%kde_post_install
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files -f %name.lang
+%defattr(-, root, root)
+%doc NEWS INSTALL README ChangeLog AUTHORS TODO
+%doc %{_mandir}/man1/*
+%dir %{_datadir}/kde4/apps/%name
+%dir %{_datadir}/icons/hicolor/16x16
+%dir %{_datadir}/icons/hicolor/16x16/apps
+%dir %{_datadir}/icons/hicolor/24x24
+%dir %{_datadir}/icons/hicolor/24x24/apps
+%dir %{_datadir}/icons/hicolor/32x32
+%dir %{_datadir}/icons/hicolor/32x32/apps
+%dir %{_datadir}/icons/hicolor/48x48
+%dir %{_datadir}/icons/hicolor/48x48/apps
+%dir %{_datadir}/icons/hicolor/64x64
+%dir %{_datadir}/icons/hicolor/64x64/apps
+%dir %{_datadir}/icons/hicolor/128x128
+%dir %{_datadir}/icons/hicolor/128x128/apps
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/scalable/apps
+%{_bindir}/%name
+%{_datadir}/applications/*/*
+%{_datadir}/icons/hicolor/*/*/*
+%{_datadir}/kde4/apps/*/*
+
+%changelog
+* Thu Sep 16 2010 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net> 0.7.4
+- Release 0.7.4
+* Tue Mar 9 2010 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net> 0.7.3
+- Release 0.7.3
+* Sun Dec 27 2009 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net> 0.7.2-2
+- Dynamic link with aseqmm
+* Wed Dec 23 2009 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net> 0.7.2
+- Release 0.7.2
+* Fri Dec 18 2009 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net> 0.7.1-2
+- openSUSE build service project restructuration
+* Sun Aug 9 2009 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net> 0.7.1
+- Release 0.7.1
+* Wed Jun 24 2009 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net> 0.7.0
+- Release 0.7.0
+* Sun Dec 29 2008 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net> 0.6.0
+- Release 0.6.0
+* Sun Apr 6 2008 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net> 0.5.1-0
+- openSuse build service
+* Mon Mar 24 2008 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net> 0.5.1
+- Release 0.5.1

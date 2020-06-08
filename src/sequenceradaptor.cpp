@@ -32,7 +32,7 @@
 //#include <klocale.h>
 
 using namespace std;
-using namespace drumstick::ALSA;
+using namespace drumstick;
 
 SequencerAdaptor::SequencerAdaptor(QObject *parent):
     QObject(parent),

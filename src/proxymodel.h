@@ -56,7 +56,7 @@ protected:
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
 
 private:
-    bool filterSequencerEvent(const drumstick::ALSA::SequencerEvent* ev) const;
+    bool filterSequencerEvent(const drumstick::SequencerEvent* ev) const;
 
     int m_trackFilter;
     EventFilter* m_filter;

@@ -28,7 +28,7 @@ public:
     SequenceItem(double seconds,
                  unsigned int ticks,
                  unsigned int track,
-                 drumstick::ALSA::SequencerEvent* ev):
+                 drumstick::SequencerEvent* ev):
     m_seconds(seconds),
     m_ticks(ticks),
     m_track(track),
@@ -42,7 +42,7 @@ public:
 
     double getSeconds() const { return m_seconds; }
     unsigned int  getTicks() const { return m_ticks; }
-    drumstick::ALSA::SequencerEvent* getEvent() const { return m_event; }
+    drumstick::SequencerEvent* getEvent() const { return m_event; }
     void deleteEvent() { delete m_event; }
     int getTrack() const { return m_track; }
     void setTrack(int track) { m_track = track; }
@@ -51,7 +51,7 @@ private:
     double m_seconds;
     unsigned int m_ticks;
     unsigned int m_track;
-    drumstick::ALSA::SequencerEvent* m_event;
+    drumstick::SequencerEvent* m_event;
 };
 
 #endif /* SEQUENCEITEM_H */
